@@ -22,11 +22,13 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <Route
-          path="/login"
-          exact
-          render={() => <LoginPage users={this.state.users} />}
-        />
+        <div className="container-fluid">
+          <Route
+            path="/login"
+            exact
+            render={() => <LoginPage users={this.state.users} />}
+          />
+        </div>
       </>
     );
   }
