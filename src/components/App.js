@@ -1,37 +1,47 @@
 import React from "react";
 import Header from "./common/Header";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import LoginPage from "./LogIn/LoginPage";
-import * as API from "../_DATA";
+import { connect } from "react-redux";
+import { handleInitialData } from "../redux/actions/shared";
+import Dashboard from "./PollsPage/Dashboard";
+import NewPoll from "./PollsPage/NewPoll";
 
 class App extends React.Component {
-  state = {
-    users: ""
-  };
-
   componentDidMount() {
-    // Get all the users
-    API._getUsers().then(response => {
-      this.setState({
-        users: response
-      });
-    });
+    this.props.dispatch(handleInitialData());
   }
 
   render() {
     return (
       <>
-        <Header />
-        <div className="container-fluid">
-          <Route
-            path="/login"
-            exact
-            render={() => <LoginPage users={this.state.users} />}
-          />
+        <Header name={this.props.name} />
+        <div className="container">
+          {this.props.authedUser === null ? (
+            <Route path="/login" exact component={LoginPage} />
+          ) : (
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/add" component={NewPoll} />
+              {/* <Route path="/dashboard">
+                <LoginPage />
+              </Route>
+              <Route path="*">
+                <LoginPage />
+              </Route> */}
+            </Switch>
+          )}
         </div>
       </>
     );
   }
 }
 
-export default App;
+function mapStateToProps({ authedUser, users }) {
+  return {
+    authedUser: authedUser,
+    name: users[authedUser] !== undefined ? users[authedUser].name : ""
+  };
+}
+
+export default connect(mapStateToProps)(App);

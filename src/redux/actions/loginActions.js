@@ -1,6 +1,10 @@
-export function setUser(user) {
-  return { type: "SET_USER", user };
+export const SET_AUTHED_USER = "SET_AUTHED_USER";
+export const LOG_OUT = "LOG_OUT";
+
+export function setAuthedUser(authedUserId) {
+  return { type: SET_AUTHED_USER, authedUserId };
 }
-export function setAuthFlag(flag) {
-  return { type: "SET_AUTH_FLAG", flag };
+
+export function logout() {
+  return { type: LOG_OUT };
 }
