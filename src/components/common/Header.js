@@ -20,17 +20,25 @@ const Header = props => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <NavLink className="nav-link" to="/" activeClassName="">
+                <NavLink className="nav-link" to="/" activeClassName="active">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/" activeClassName="">
+                <NavLink
+                  className="nav-link"
+                  to="/leaderboard"
+                  activeClassName="active"
+                >
                   Leader Board
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/add" activeClassName="">
+                <NavLink
+                  className="nav-link"
+                  to="/add"
+                  activeClassName="active"
+                >
                   Create a question
                 </NavLink>
               </li>

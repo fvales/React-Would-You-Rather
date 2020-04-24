@@ -21,7 +21,25 @@
 }
 .poll-info {
   margin: 10px;
+  display: flex;
   flex-direction: column;
+}
+.poll-info .name {
+  font-size: 16px;
+  font-weight: 600;
+}
+.poll-info .time {
+  font-style: italic;
+  color: #a9a9a9;
+  font-size: 14px;
+}
+.poll-info .question {
+  font-size: 18px;
+  font-weight: 600;
+}
+.poll-info .option {
+  font-style: italic;
+  font-size: 14px;
 }
 .tweet-info > span:first-child {
   font-weight: 700;
@@ -42,6 +60,8 @@
 .poll-container {
   padding: 20px;
   background-color: #fff;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 .login-container {
   padding: 30px;
@@ -59,4 +79,7 @@
 .add-question-container {
   background-color: #fff;
   padding: 20px;
+}
+.table {
+  background-color: #fff;
 }

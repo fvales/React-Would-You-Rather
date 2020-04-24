@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import PollList from "./PollList";
 
 class Dashboard extends React.Component {
@@ -35,10 +34,4 @@ function mapStateToProps({ questions, users, authedUser }) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    // actions: bindActionCreators(loginActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);

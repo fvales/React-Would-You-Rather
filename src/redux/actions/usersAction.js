@@ -6,8 +6,8 @@ export function receiveUsers(users) {
   return { type: RECEIVE_USERS, users };
 }
 
-export function addQuestionToUser(questionId) {
-  return { type: ADD_QUESTION_TO_USER, questionId };
+export function addQuestionToUser(question) {
+  return { type: ADD_QUESTION_TO_USER, question };
 }
 
 export function addAnswerToUser(questionId, selectedOption) {

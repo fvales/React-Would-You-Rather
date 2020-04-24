@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../redux/actions/shared";
 import Dashboard from "./PollsPage/Dashboard";
 import NewPoll from "./PollsPage/NewPoll";
+import Leaderboard from "./Leaderboard/Leaderboard";
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,6 +24,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/add" component={NewPoll} />
+              <Route exact path="/leaderboard" component={Leaderboard} />
               {/* <Route path="/dashboard">
                 <LoginPage />
               </Route>
