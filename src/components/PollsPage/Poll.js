@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { formatDate } from "../../utils/helpers";
+import { Link } from "react-router-dom";
 
 class Poll extends React.Component {
   render() {
     return (
-      <div className="">
+      <Link to={`/poll/${this.props.qid}`} className="poll-container">
         <div className="avatar">
           <img src={this.props.avatar} alt={`avatar of ${this.props.name}`} />
         </div>
@@ -17,7 +18,7 @@ class Poll extends React.Component {
           <span>OR</span>
           <span className="option">{this.props.question.optionTwo.text}</span>
         </div>
-      </div>
+      </Link>
     );
   }
 }

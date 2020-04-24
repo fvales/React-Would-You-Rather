@@ -4,7 +4,7 @@ import Poll from "./Poll";
 class PollList extends React.Component {
   render() {
     return (
-      <div className="border poll-container">
+      <div className="border poll-list-container">
         <h3 className="text-center">{this.props.title}</h3>
         <ul className="p-0">
           {this.props.qids.map(qid => (

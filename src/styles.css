@@ -56,7 +56,7 @@
   border-radius: 10px;
   margin: 20px;
 }
-.poll-container {
+.poll-list-container {
   padding: 20px;
   background-color: #fff;
   height: calc(100vh - 100px);
@@ -81,4 +81,18 @@
 }
 .table {
   background-color: #fff;
+}
+.user-info span:first-child {
+  margin-right: 30px;
+}
+.user-info {
+  color: #fff;
+}
+.poll-container,
+.poll-container:hover {
+  text-decoration: none;
+  color: #000;
+}
+.custom-radio {
+  margin-bottom: 20px;
 }

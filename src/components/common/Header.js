@@ -44,21 +44,10 @@ const Header = props => {
               </li>
             </ul>
           </div>
-          <div className="float-right">
-            <ul className="nav float-right">
-              <li className="dropdown">
-                <span className="dropdown-toggle" data-toggle="dropdown">
-                  Welcome, {props.name} <b className="caret"></b>
-                </span>
-                <ul className="dropdown-menu">
-                  <li>
-                    <span>
-                      <i className="icon-off"></i> Logout
-                    </span>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+          <div className="float-right user-info">
+            <span>Welcome, {props.name}</span>
+
+            <span>Logout</span>
           </div>
         </>
       )}

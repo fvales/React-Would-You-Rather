@@ -8,6 +8,7 @@ import Dashboard from "./PollsPage/Dashboard";
 import NewPoll from "./PollsPage/NewPoll";
 import Leaderboard from "./Leaderboard/Leaderboard";
 import PageNotFound from "./common/PageNotFound";
+import PollDetails from "./PollsPage/PollDetails";
 
 class App extends React.Component {
   componentDidMount() {
@@ -41,6 +42,7 @@ class App extends React.Component {
               path="/leaderboard"
               component={Leaderboard}
             />
+            <this.PrivateRoute exact path="/poll/:id" component={PollDetails} />
             <this.PrivateRoute component={PageNotFound} />
           </Switch>
         </div>
