@@ -31,6 +31,7 @@ class LoginPage extends React.Component {
                 className="form-control"
                 id="user"
                 onChange={this.handleChanges}
+                defaultValue=""
               >
                 <option value="" disabled>
                   Please select

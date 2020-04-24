@@ -96,3 +96,9 @@
 .custom-radio {
   margin-bottom: 20px;
 }
+.progress {
+  flex-direction: column;
+  height: 8rem !important;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}

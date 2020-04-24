@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Poll from "./Poll";
-
+import { handleAddUserAnswerToQuestion } from "../../redux/actions/questionsAction";
 class PollDetails extends React.Component {
   state = {
     optionSelected: ""
@@ -15,9 +15,9 @@ class PollDetails extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    // this.props.dispatch(
-    //   handleAddQuestion(this.state.optionSelected)
-    // );
+    this.props.dispatch(
+      handleAddUserAnswerToQuestion(this.props.qid, this.state.optionSelected)
+    );
   };
 
   checkSelectedOPtion() {
@@ -92,19 +92,21 @@ class PollDetails extends React.Component {
           {this.props.hasAnswered && (
             <div className="">
               <div className="progress">
+                <h5>Option 1: {this.props.totalVotesOpt1} Voted</h5>
                 <div
                   className="progress-bar"
                   role="progressbar"
                   style={{ width: `${this.props.percentageForOption1}%` }}
                 >
-                  {this.props.percentageForOption1}
+                  {this.props.percentageForOption1}%
                 </div>
+                <h5>Option 2: {this.props.totalVotesOpt2} Voted</h5>
                 <div
                   className="progress-bar"
                   role="progressbar"
                   style={{ width: `${this.props.percentageForOption2}%` }}
                 >
-                  {this.props.percentageForOption2}
+                  {this.props.percentageForOption2}%
                 </div>
               </div>
               <span>Total number of votes: {this.props.totalNumOfVotes}</span>
@@ -122,12 +124,16 @@ function mapStateToProps({ questions, authedUser, users }, { match }) {
   const question = questions[qid];
   const totalNumOfVotes =
     question.optionOne.votes.length + question.optionTwo.votes.length;
+  const totalVotesOpt1 = question.optionOne.votes.length;
+  const totalVotesOpt2 = question.optionTwo.votes.length;
   return {
     qid,
     hasAnswered: Object.keys(user.answers).includes(qid),
     authedUser,
     question,
     totalNumOfVotes,
+    totalVotesOpt1,
+    totalVotesOpt2,
     percentageForOption1: parseFloat(
       (question.optionOne.votes.length / totalNumOfVotes) * 100
     ).toFixed(2),

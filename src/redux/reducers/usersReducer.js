@@ -12,7 +12,17 @@ export default function usersReducer(state = [], action) {
         }
       };
     case "ADD_ANSWER_TO_USER":
-      return { ...state };
+      const { authedUser, qid, answer } = action;
+      return {
+        ...state,
+        [authedUser]: {
+          ...state[authedUser],
+          answers: {
+            ...state[authedUser].answers,
+            [qid]: answer
+          }
+        }
+      };
     default:
       return state;
   }
