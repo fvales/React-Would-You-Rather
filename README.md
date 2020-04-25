@@ -4,6 +4,9 @@ In the "Would You Rather?" Project is a web app that lets a user play the “Wou
 
 ## App Functionality
 
+The person using the application impersonatins/logs in as an existing user. Once the user logs in, the user can toggle between his/her answered and unanswered polls on the home page, which is located at the root. The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom). Each polling question links to the details of that poll. The application has a leaderboard.
+The application allows user to create a new poll.
+
 ## Run the project
 
 - install all project dependencies with `npm install`
