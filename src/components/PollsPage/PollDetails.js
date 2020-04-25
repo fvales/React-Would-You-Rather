@@ -119,7 +119,7 @@ class PollDetails extends React.Component {
 }
 
 function mapStateToProps({ questions, authedUser, users }, { match }) {
-  const qid = match.params.id;
+  const qid = match.params.question_id;
   const user = users[authedUser];
   const question = questions[qid];
   const totalNumOfVotes =

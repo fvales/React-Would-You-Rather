@@ -1,21 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
 import PollList from "./PollList";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tab";
 
 class Dashboard extends React.Component {
   render() {
     return (
-      <div className="row">
-        <div className="col-lg-6">
-          <PollList
-            title="Unanswered Questions"
-            qids={this.props.unansweredIds}
-          />
-        </div>
-        <div className="col-lg-6">
-          <PollList title="Answered Questions" qids={this.props.answeredIds} />
-        </div>
-      </div>
+      <>
+        <Tabs defaultActiveKey="unanswered" id="uncontrolled-tab-example">
+          <Tab eventKey="unanswered" title="Unanswered">
+            <PollList
+              title="Unanswered Questions"
+              qids={this.props.unansweredIds}
+            />
+          </Tab>
+          <Tab eventKey="answered" title="Answered">
+            <PollList
+              title="Answered Questions"
+              qids={this.props.answeredIds}
+            />
+          </Tab>
+        </Tabs>
+      </>
     );
   }
 }

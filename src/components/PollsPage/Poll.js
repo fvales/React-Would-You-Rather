@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 class Poll extends React.Component {
   render() {
     return (
-      <Link to={`/poll/${this.props.qid}`} className="poll-container">
+      <Link to={`/questions/${this.props.qid}`} className="poll-container">
         <div className="avatar">
           <img src={this.props.avatar} alt={`avatar of ${this.props.name}`} />
         </div>

@@ -45,6 +45,24 @@ class App extends React.Component {
             <this.PrivateRoute exact path="/poll/:id" component={PollDetails} />
             <this.PrivateRoute component={PageNotFound} />
           </Switch>
+          {/* <Switch>
+            {this.props.authedUser === null ? (
+              <Route path="/" exact component={LoginPage} />
+            ) : (
+              <>
+                
+                <Route exact path="/" component={Dashboard} />
+                <Route exact path="/add" component={NewPoll} />
+                <Route exact path="/leaderboard" component={Leaderboard} />
+                <Route
+                  exact
+                  path="/questions/:question_id"
+                  component={PollDetails}
+                />
+                <Route component={PageNotFound} />
+              </>
+            )}
+          </Switch> */}
         </div>
       </>
     );
