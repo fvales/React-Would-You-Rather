@@ -19,7 +19,6 @@ class LoginPage extends React.Component {
     const { history } = this.props;
     let { from } = history.location.state || { from: { pathname: "/" } };
     history.replace(from);
-    // history.push(pathname);
   };
 
   render() {
