@@ -19,10 +19,15 @@ class App extends React.Component {
     <Route
       {...rest}
       render={props =>
-        this.props.authedUser === null ? (
-          <Redirect to="/login" />
-        ) : (
+        this.props.authedUser !== null ? (
           <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
         )
       }
     />
@@ -42,7 +47,11 @@ class App extends React.Component {
               path="/leaderboard"
               component={Leaderboard}
             />
-            <this.PrivateRoute exact path="/poll/:id" component={PollDetails} />
+            <this.PrivateRoute
+              exact
+              path="/questions/:question_id"
+              component={PollDetails}
+            />
             <this.PrivateRoute component={PageNotFound} />
           </Switch>
           {/* <Switch>
@@ -50,7 +59,6 @@ class App extends React.Component {
               <Route path="/" exact component={LoginPage} />
             ) : (
               <>
-                
                 <Route exact path="/" component={Dashboard} />
                 <Route exact path="/add" component={NewPoll} />
                 <Route exact path="/leaderboard" component={Leaderboard} />

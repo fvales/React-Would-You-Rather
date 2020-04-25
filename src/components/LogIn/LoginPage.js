@@ -16,7 +16,10 @@ class LoginPage extends React.Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.actions.setAuthedUser(this.state.userId);
-    this.props.history.push("/");
+    const { history } = this.props;
+    let { from } = history.location.state || { from: { pathname: "/" } };
+    history.replace(from);
+    // history.push(pathname);
   };
 
   render() {
