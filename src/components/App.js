@@ -61,18 +61,6 @@ class App extends React.Component {
               path="/questions/:question_id"
               component={PollDetails}
             />
-            {/* <this.PrivateRoute
-              exact
-              path="/questions/:question_id"
-              render={props =>
-                this.props.questions[props.match.params.question_id] !==
-                undefined ? (
-                  <PollDetails />
-                ) : (
-                  <Redirect to="/404" />
-                )
-              }
-            /> */}
             <this.PrivateRoute component={PageNotFound} />
           </Switch>
         </div>
