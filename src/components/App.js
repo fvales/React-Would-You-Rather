@@ -20,7 +20,16 @@ class App extends React.Component {
       {...rest}
       render={props =>
         this.props.authedUser !== null ? (
-          <Component {...props} />
+          <>
+            {props.match.path === "/questions/:question_id" &&
+            !Object.keys(this.props.questions).includes(
+              props.match.params.question_id
+            ) ? (
+              <Redirect to="/404" />
+            ) : (
+              <Component {...props} />
+            )}
+          </>
         ) : (
           <Redirect
             to={{
@@ -52,33 +61,29 @@ class App extends React.Component {
               path="/questions/:question_id"
               component={PollDetails}
             />
+            {/* <this.PrivateRoute
+              exact
+              path="/questions/:question_id"
+              render={props =>
+                this.props.questions[props.match.params.question_id] !==
+                undefined ? (
+                  <PollDetails />
+                ) : (
+                  <Redirect to="/404" />
+                )
+              }
+            /> */}
             <this.PrivateRoute component={PageNotFound} />
           </Switch>
-          {/* <Switch>
-            {this.props.authedUser === null ? (
-              <Route path="/" exact component={LoginPage} />
-            ) : (
-              <>
-                <Route exact path="/" component={Dashboard} />
-                <Route exact path="/add" component={NewPoll} />
-                <Route exact path="/leaderboard" component={Leaderboard} />
-                <Route
-                  exact
-                  path="/questions/:question_id"
-                  component={PollDetails}
-                />
-                <Route component={PageNotFound} />
-              </>
-            )}
-          </Switch> */}
         </div>
       </>
     );
   }
 }
 
-function mapStateToProps({ authedUser, users }) {
+function mapStateToProps({ authedUser, users, questions }) {
   return {
+    questions,
     authedUser: authedUser,
     name: users[authedUser] !== undefined ? users[authedUser].name : ""
   };
